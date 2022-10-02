@@ -8,7 +8,7 @@ export default class Header extends Component {
         // const { login, logout, userHasScopes } = this.props.auth;
         return (
             <nav className="navbar navbar-expand-lg bg-white fixed-top">
-                <Link to="/" className="navbar-brand" >Bhagavad Gita</Link>
+                <Link to="/home" className="navbar-brand" >Bhagavad Gita</Link>
                 <img className="img-fluid" src={LogoImg} alt="card-img" height={20} width={40} />
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
