@@ -32,7 +32,6 @@ class App extends Component {
 
       <div className="dashboard-header ">
         <Header />
-        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route exact path="/" component={HomePage} />
             {/* <Route exact path="/home" component={HomePage} /> */}
@@ -47,7 +46,6 @@ class App extends Component {
             <Route exact path="/cardview/:id" component={CardView} />
             <Route exact component={PageNotFound} />
           </Switch>
-        </Router>
         <Footer />
         <ToastContainer autoClose={3000} hideProgressBar />
       </div>
