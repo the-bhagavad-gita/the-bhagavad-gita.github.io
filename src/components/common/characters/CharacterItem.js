@@ -9,9 +9,7 @@ const CharacterItem = ({ item }) => {
             <div className="card card-figure has-hoverable">
                 <figure className="figure">
                     <div className="figure-img">
-                        <img className="img-fluid" src={CardImg}
-                            alt="card-img" />
-                        <div className="figure-description">
+                        <div style={{ height: '10vw' }}>
                             <h6 className="figure-title"> {item.name} </h6>
                             <p className="text-muted mb-0">
                                 <small> {item.description}
@@ -21,8 +19,7 @@ const CharacterItem = ({ item }) => {
                             </p>
                         </div>
                         <div className="figure-action">
-                            {/* <a href="#" className="btn btn-block btn-sm btn-primary">Meaning</a> */}
-                            <Link to={`/cardview/` + item.id} className="btn btn-block btn-sm btn-primary" >Meaning</Link>
+                            <Link to={`/cardview/` + item.id} className="btn btn-block btn-sm btn-primary" >Details</Link>
                         </div>
                     </div>
                     <figcaption className="figure-caption">
