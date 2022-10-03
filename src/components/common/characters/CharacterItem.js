@@ -1,9 +1,13 @@
 import React from 'react'
 import { Route, Link } from "react-router-dom";
 import CardImg from "../../../img/card-img.jpg";
+import { useSpeechSynthesis } from "react-speech-kit";
+import { GrDocumentSound } from "react-icons/gr";
 
 const CharacterItem = ({ item }) => {
     console.log(item);
+    const [value, setValue] = React.useState("");
+    const { speak } = useSpeechSynthesis();
     return (
         <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
             <div className="card card-figure has-hoverable">
@@ -13,8 +17,8 @@ const CharacterItem = ({ item }) => {
                             <h6 className="figure-title"> {item.name} </h6>
                             <p className="text-muted mb-0">
                                 <small> {item.description}
-                                </small> <br/><br/>
-                                <small> <b> Meaning </b> - <br/> {item.meaning}
+                                </small> <br /><br />
+                                <small> <b> Meaning </b> - <br /> {item.meaning}
                                 </small>
                             </p>
                         </div>
@@ -40,7 +44,19 @@ const CharacterItem = ({ item }) => {
                             </li>
                             <li className="list-inline-item">
                                 <a href={CardImg} download> <span><i
-                                    className="fa  fa-download "></i></span></a>
+                                    className="fa fa-download "></i></span></a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a href="#" onClick={() => speak({ text: item.description })}>
+                                    <span><i
+                                        className="fa fa-volume-up"></i></span>
+                                </a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a href="#" onClick={() => speak({ text: item.meaning })}>
+                                    <span><i
+                                        className="fa fa-volume-up"></i></span>
+                                </a>
                             </li>
                         </ul>
                     </figcaption>
