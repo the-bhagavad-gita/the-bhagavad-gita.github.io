@@ -2,12 +2,11 @@ import React from 'react'
 import { Route, Link } from "react-router-dom";
 import CardImg from "../../../img/card-img.jpg";
 import { useSpeechSynthesis } from "react-speech-kit";
-import { GrDocumentSound } from "react-icons/gr";
 
 const CharacterItem = ({ item }) => {
     console.log(item);
     const [value, setValue] = React.useState("");
-    const { speak } = useSpeechSynthesis();
+    const { speak,cancel } = useSpeechSynthesis();
     return (
         <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
             <div className="card card-figure has-hoverable">
@@ -46,16 +45,22 @@ const CharacterItem = ({ item }) => {
                                 <a href={CardImg} download> <span><i
                                     className="fa fa-download "></i></span></a>
                             </li>
-                            <li className="list-inline-item">
+                            {/* <li className="list-inline-item">
                                 <a href="#" onClick={() => speak({ text: item.description })}>
                                     <span><i
                                         className="fa fa-volume-up"></i></span>
                                 </a>
-                            </li>
+                            </li> */}
                             <li className="list-inline-item">
                                 <a href="#" onClick={() => speak({ text: item.meaning })}>
                                     <span><i
                                         className="fa fa-volume-up"></i></span>
+                                </a>
+                            </li>
+
+                            <li className="list-inline-item">
+                                <a href="#" onClick={cancel}>
+                                    <span><i className="fa fa-stop-circle-o"></i></span>
                                 </a>
                             </li>
                         </ul>
