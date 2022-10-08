@@ -1,8 +1,8 @@
 {
-  "name": "bookmark-dashboard-ui",
+  "name": "shrimad-bhagavad-gita",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://amitpnk.github.io/bhagavad-gita",
+  "homepage": "https://shrimad-bhagavad-gita.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -20,6 +20,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
+    "react-speech-kit": "^3.0.1",
     "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
