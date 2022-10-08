@@ -6,7 +6,13 @@ import { useSpeechSynthesis } from "react-speech-kit";
 const CharacterItem = ({ item }) => {
     console.log(item);
     const [value, setValue] = React.useState("");
-    const { speak,cancel } = useSpeechSynthesis();
+    const { speak, cancel } = useSpeechSynthesis();
+    const [play, stop] = React.useState(true);
+    const handleChange = () => {
+        speak({ text: item.meaning })
+
+        return play ?? !play;
+    };
     return (
         <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
             <div className="card card-figure has-hoverable">
@@ -31,7 +37,7 @@ const CharacterItem = ({ item }) => {
                             <li className="list-inline-item text-truncate mr-auto">
                                 <a href={CardImg} download> <span className="badge badge-info">{item.code}</span></a>
                             </li>
-                            <li className="list-inline-item ">
+                            {/* <li className="list-inline-item ">
                                 <a href="#"> <span><i
                                     className="fa fa-star "></i></span></a>
                             </li>
@@ -40,21 +46,16 @@ const CharacterItem = ({ item }) => {
                                 <a href={`mailto:?subject=Bookmark Dashboard: sharing '${item.name}'&body=Hello,%0D%0A%0D%0AI would like to share this url with you:
                                         ${window.location.protocol + "//" + window.location.host + "/cardview/" + item.id} 
                                         ${item.expireDate ? "which will be expire before" + item.expireDate : ""} %0D%0A%0D%0A Regards,`} className="fa fa-share-alt" >&nbsp;</a>
-                            </li>
-                            <li className="list-inline-item">
+                            </li> */}
+                            {/* <li className="list-inline-item">
                                 <a href={CardImg} download> <span><i
                                     className="fa fa-download "></i></span></a>
-                            </li>
-                            {/* <li className="list-inline-item">
-                                <a href="#" onClick={() => speak({ text: item.description })}>
-                                    <span><i
-                                        className="fa fa-volume-up"></i></span>
-                                </a>
                             </li> */}
+
                             <li className="list-inline-item">
-                                <a href="#" onClick={() => speak({ text: item.meaning })}>
+                                <a href="#" onClick={() => handleChange()}>
                                     <span><i
-                                        className="fa fa-volume-up"></i></span>
+                                        className={play ? "fa fa-play" : "fa fa-stop-circle-o"}></i></span>
                                 </a>
                             </li>
 
