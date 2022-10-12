@@ -7,11 +7,10 @@ const CharacterItem = ({ item }) => {
     console.log(item);
     const [value, setValue] = React.useState("");
     const { speak, cancel } = useSpeechSynthesis();
-    const [play, stop] = React.useState(true);
+    const [play, setPlay] = React.useState(true);
     const handleChange = () => {
-        speak({ text: item.meaning })
-
-        return play ?? !play;
+        play ? speak({ text: item.meaning }) : cancel();
+        setPlay(play => !play);
     };
     return (
         <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -56,12 +55,6 @@ const CharacterItem = ({ item }) => {
                                 <a href="#" onClick={() => handleChange()}>
                                     <span><i
                                         className={play ? "fa fa-play" : "fa fa-stop-circle-o"}></i></span>
-                                </a>
-                            </li>
-
-                            <li className="list-inline-item">
-                                <a href="#" onClick={cancel}>
-                                    <span><i className="fa fa-stop-circle-o"></i></span>
                                 </a>
                             </li>
                         </ul>
