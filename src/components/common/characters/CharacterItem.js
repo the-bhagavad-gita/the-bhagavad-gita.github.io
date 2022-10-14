@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Link } from "react-router-dom";
 import CardImg from "../../../img/card-img.jpg";
 import { useSpeechSynthesis } from "react-speech-kit";
+import ReactTooltip from "react-tooltip";
 
 const CharacterItem = ({ item }) => {
     console.log(item);
@@ -46,13 +47,14 @@ const CharacterItem = ({ item }) => {
                                         ${window.location.protocol + "//" + window.location.host + "/cardview/" + item.id} 
                                         ${item.expireDate ? "which will be expire before" + item.expireDate : ""} %0D%0A%0D%0A Regards,`} className="fa fa-share-alt" >&nbsp;</a>
                             </li> */}
-                            {/* <li className="list-inline-item">
-                                <a href={CardImg} download> <span><i
-                                    className="fa fa-download "></i></span></a>
-                            </li> */}
+                            <li className="list-inline-item">
+                                <a href="#" data-tip="Copy to clipboard" onClick={() => { navigator.clipboard.writeText(item.name + '\n' + item.description + '\nMeaning - \n' + item.meaning) }}>
+                                    <span><i className="fa fa-clipboard "></i></span>
+                                </a>
+                            </li>
 
                             <li className="list-inline-item">
-                                <a href="#" onClick={() => handleChange()}>
+                                <a href="#" data-tip={play ? "Play" : "Stop"} onClick={() => handleChange()}>
                                     <span><i
                                         className={play ? "fa fa-play" : "fa fa-stop-circle-o"}></i></span>
                                 </a>
@@ -60,10 +62,10 @@ const CharacterItem = ({ item }) => {
                         </ul>
                     </figcaption>
                 </figure>
-
             </div>
 
-        </div>
+            <ReactTooltip theme="dark" position="right" />
+        </div >
     )
 }
 
